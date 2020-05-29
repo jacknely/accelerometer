@@ -33,7 +33,7 @@
 
       function recording() {
         let acl = new Accelerometer({ frequency: 2 });
-        setTimeout(acl.stop(), 3000000);
+        setTimeout(acl.stop(), 10000);
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
           readings.x.push(acl.x);
