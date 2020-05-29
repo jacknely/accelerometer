@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 5.17</h1>
+    <h1>Phone Data 6.1</h1>
     <div id="status">No data</div>
     <div id="controls">
       <button onclick="recording()">Record</button>
@@ -33,6 +33,9 @@
 
       function recording() {
         let acl = new Accelerometer({ frequency: 2 });
+        setTimeout((acl) => {
+          acl.stop();
+        }, 2000);
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
           readings.x.push(acl.x);
