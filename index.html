@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer raw data</h1>
+    <h1>Accelerometer data</h1>
     <div id="status">No data</div>
 
     <script>
@@ -27,13 +27,9 @@
             e.target.z;
         });
         sensor.start();
-
-        setInterval((sensor) => {
-          console.log(sensor);
-          sensor;
-          ("test");
-        }, 5000);
       } else status.innerHTML = "Accelerometer not supported";
     </script>
+
+    <button onclick="printValues(sensor)">Record</button>
   </body>
 </html>
