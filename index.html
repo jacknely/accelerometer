@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <div id="result">
+    <div id="status">
       <h1>Accelerometer Reader v0.1</h1>
       <p>
       <ol>
@@ -19,15 +19,17 @@
         <li>Refresh page to reset app</li>
       </ol>
     </p>
-      <div id="status">No Accelerometer on Device</div>
       <button onclick="start()">Start</button>
-      <button onclick="stop()">Stop</button>
+      
+    </div>
+    <div id="stop" style="display: none;">
+    <button onclick="stop()">Stop</button>
     </div>
     <script>
       var save = false;
       var readings = { x: [], y: [], z: [] };
       let status = document.getElementById("status");
-      if ("Accelerometer" in window) {
+      if ("Accelerometer" in window && save === true) {
         let sensor = new Accelerometer();
         sensor.addEventListener("reading", function (e) {
           status.innerHTML =
@@ -44,12 +46,13 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function start() {
-        let status = document.getElementById("result");
+        let stop = document.getElementById("stop");
+        stop.style.display = "block"
         save = !save;
       }
 
       function stop() {
-        let result = document.getElementById("result");
+        
         save = !save;
         result.innerHTML = JSON.stringify(readings);
       }
