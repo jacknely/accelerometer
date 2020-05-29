@@ -38,7 +38,7 @@
           readings = [1];
           let magnitude = Math.hypot(acl.x, acl.y, acl.z);
           console.log(`Max magnitude: ${max_magnitude} m/s2`);
-          reading.push(max_magnitude);
+          readings.push(max_magnitude);
           console.log(readings);
         });
         acl.start();
