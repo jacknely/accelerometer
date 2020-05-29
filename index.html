@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer data 5.9</h1>
+    <h1>Accelerometer data 5.10</h1>
     <div id="status">No data</div>
     <div id="records">No Recordings</div>
     <button onclick="printValues()">Record</button>
@@ -35,7 +35,6 @@
         let acl = new Accelerometer({ frequency: 30 });
         readings = [1];
         acl.addEventListener("reading", () => {
-          console.log(acl.x);
           readings.push(acl.x);
           console.log(readings);
         });
