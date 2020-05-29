@@ -31,17 +31,18 @@
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
 
-      function hideControls() {
+      function hideControls(acl) {
         var x = document.getElementById("controls");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {
           x.style.display = "none";
+          setTimeout(acl.stop(), 5000);
         }
       }
 
       function recording() {
-        hideControls();
+        hideControls(acl);
         let acl = new Accelerometer({ frequency: 2 });
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
