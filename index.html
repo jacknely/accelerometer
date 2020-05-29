@@ -40,14 +40,15 @@
         } else {
           x.style.display = "none";
           let record_status = true;
+          recording();
           setTimeout(() => {
             record_status = false;
           }, 8000);
-          recording();
         }
       }
 
       function recording() {
+        console.log(record_status);
         if (record_status === true) {
           let acl = new Accelerometer({ frequency: 2 });
           readings = { x: [], y: [], z: [] };
