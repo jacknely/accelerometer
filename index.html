@@ -3,16 +3,20 @@
   <head>
     <title>Accelerometer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script
-      src="https://unpkg.com/mqtt/dist/mqtt.min.js"
-      type="text/javascript"
-    ></script>
     <meta charset="UTF-8" />
   </head>
   <body>
     <div id="result">
-      <h1>Phone Data 6.1.9</h1>
-      <div id="status">No data</div>
+      <h1>Accelerometer Reader v0.1</h1>
+      <div id="status"><p>
+        <ol>
+          <li>Press 'Start' to record accelerometer data</li>
+          <li>When excercise is complete press 'Stop'</li>
+          <li>Results will be displayed in json format.
+            These can be copied to a new file for investigation</li>
+        </ol>
+      </p></div>
+      <div>""</div>
       <button onclick="change()">Start</button>
       <button onclick="stop()">Stop</button>
     </div>
