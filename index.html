@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 5.16</h1>
+    <h1>Phone Data 5.17</h1>
     <div id="status">No data</div>
     <div id="controls">
       <button onclick="start()">Record</button>
@@ -39,11 +39,11 @@
           x.style.display = "block";
         } else {
           x.style.display = "none";
-          recording();
-          setTimeout(() => {
-            let record_status = false;
-          }, 8000);
         }
+        recording();
+        setTimeout(() => {
+          letrecord_status = false;
+        }, 8000);
       }
 
       function recording() {
