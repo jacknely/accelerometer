@@ -10,11 +10,12 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 6.1.5</h1>
+    <h1>Phone Data 6.1.6</h1>
     <div id="status">No data</div>
     <button onclick="change()">Start</button>
     <button onclick="()=>{let save = false}">Stop</button>
     <script>
+      var save = false;
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
@@ -33,7 +34,7 @@
 
       function change() {
         console.log("state changed");
-        let save = true;
+        save = true;
       }
 
       function recording(e) {
