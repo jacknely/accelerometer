@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 6.1.1</h1>
+    <h1>Phone Data 6.1.2</h1>
     <div id="status">No data</div>
     <button onclick="recording()">Start</button>
     <button onclick="stop()">Stop</button>
@@ -34,11 +34,14 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function recording(e) {
-        readings = { x: [], y: [], z: [] };
-        readings.x.push(e.target.x);
-        readings.y.push(e.target.y);
-        readings.z.push(e.target.z);
-        console.log(readings);
+        let recording = true;
+        if (recording === true) {
+          readings = { x: [], y: [], z: [] };
+          readings.x.push(e.target.x);
+          readings.y.push(e.target.y);
+          readings.z.push(e.target.z);
+          console.log(readings);
+        }
       }
     </script>
   </body>
