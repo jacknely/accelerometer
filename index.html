@@ -43,7 +43,7 @@
       function stop() {
         let result = document.getElementById("result");
         save = !save;
-        result.innerHTML = `${readings.toString()}`;
+        result.innerHTML = JSON.stringify(readings);
       }
 
       function recording(e) {
