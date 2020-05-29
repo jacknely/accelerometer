@@ -26,7 +26,7 @@
             e.target.y +
             "<br> z: " +
             e.target.z;
-          recording(e, save);
+          recording(e);
         });
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
@@ -36,7 +36,7 @@
         let save = true;
       }
 
-      function recording(e, save) {
+      function recording(e) {
         console.log(save);
         if (save === true) {
           readings = { x: [], y: [], z: [] };
