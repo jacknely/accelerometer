@@ -19,6 +19,9 @@
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
+        setTimeout((sensor) => {
+          sensor.stop();
+        }, 2000);
         sensor.addEventListener("reading", function (e) {
           status.innerHTML =
             "x: " +
