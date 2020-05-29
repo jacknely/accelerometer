@@ -48,17 +48,18 @@
       }
 
       function recording() {
-        if (record_status === true {
-        let acl = new Accelerometer({ frequency: 2 });
-        readings = { x: [], y: [], z: [] };
-        acl.addEventListener("reading", () => {
-          readings.x.push(acl.x);
-          readings.y.push(acl.y);
-          readings.z.push(acl.z);
-          console.log(readings);
-        });
-        acl.start();
-      }}
+        if (record_status === true) {
+          let acl = new Accelerometer({ frequency: 2 });
+          readings = { x: [], y: [], z: [] };
+          acl.addEventListener("reading", () => {
+            readings.x.push(acl.x);
+            readings.y.push(acl.y);
+            readings.z.push(acl.z);
+            console.log(readings);
+          });
+          acl.start();
+        }
+      }
     </script>
   </body>
 </html>
