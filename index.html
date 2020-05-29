@@ -10,10 +10,11 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer data 5.13</h1>
-    <div id="status">No data<br /><br /></div>
-    <button onclick="printValues()">Record</button>
-
+    <h1>Accelerometer data 5.135</h1>
+    <div id="status">No data</div>
+    <div id="controls">
+      <button onclick="recording()">Record</button>
+    </div>
     <script>
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
@@ -30,7 +31,17 @@
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
 
-      function printValues() {
+      function hideControls() {
+        var x = document.getElementById("controls");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+
+      function recording() {
+        hideControls();
         let acl = new Accelerometer({ frequency: 2 });
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
