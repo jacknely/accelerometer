@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer data 5.11</h1>
+    <h1>Accelerometer data 5.12</h1>
     <div id="status">No data</div>
     <div id="records">No Recordings</div>
     <button onclick="printValues()">Record</button>
@@ -32,8 +32,8 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function printValues() {
-        let acl = new Accelerometer({ frequency: 0.1 });
-        readings = [1];
+        let acl = new Accelerometer({ frequency: 2 });
+        readings = [];
         acl.addEventListener("reading", () => {
           readings.push(acl.x);
           console.log(readings);
