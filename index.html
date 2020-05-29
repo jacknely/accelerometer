@@ -11,7 +11,7 @@
   </head>
   <body>
     <div id="result">
-      <h1>Phone Data 6.1.7</h1>
+      <h1>Phone Data 6.1.8</h1>
       <div id="status">No data</div>
       <button onclick="change()">Start</button>
       <button onclick="stop()">Stop</button>
@@ -43,7 +43,7 @@
       function stop() {
         let result = document.getElementById("result");
         save = !save;
-        status.innerHTML = readings.toString();
+        status.innerHTML = `${readings.toString()}`;
       }
 
       function recording(e) {
