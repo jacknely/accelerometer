@@ -12,6 +12,7 @@
   <body>
     <h1>Accelerometer data 2</h1>
     <div id="status">No data</div>
+    <div id="records">No Recordings</div>
 
     <script>
       let status = document.getElementById("status");
@@ -30,8 +31,9 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function printValues(sensor) {
+        let records = document.getElementById("records");
         sensor.addEventListener("reading", function (e) {
-          status.innerHTML = e.target.x;
+          records.innerHTML = e.target.x;
         });
       }
     </script>
