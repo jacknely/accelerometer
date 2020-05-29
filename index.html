@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 6.1</h1>
+    <h1>Phone Data 6.1.1</h1>
     <div id="status">No data</div>
     <div id="controls">
       <button onclick="recording()">Record</button>
@@ -19,9 +19,6 @@
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
-        setTimeout((sensor) => {
-          sensor.stop();
-        }, 2000);
         sensor.addEventListener("reading", function (e) {
           status.innerHTML =
             "x: " +
