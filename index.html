@@ -32,9 +32,9 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function printValues() {
-        let acl = new Accelerometer();
+        let acl = new Accelerometer({ frequency: 30 });
+        readings = [1];
         acl.addEventListener("reading", () => {
-          readings = [1];
           console.log(acl.x);
           readings.push(acl.x);
           console.log(readings);
