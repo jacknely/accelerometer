@@ -20,9 +20,9 @@
       </ol>
     </p>
       <div id="status">No Accelerometer on Device</div>
-      <button onclick="change()">Start</button>
-      <button onclick="stop()">Stop</button>
+      <button onclick="start()">Start</button>
     </div>
+    <button onclick="stop()">Stop</button>
     <script>
       var save = false;
       var readings = { x: [], y: [], z: [] };
@@ -43,9 +43,11 @@
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
 
-      function change() {
-        console.log("state changed");
+      function start() {
+        let result = document.getElementById("result");
+        result.innerHTML = "<p>Recording</p>"
         save = !save;
+
       }
 
       function stop() {
