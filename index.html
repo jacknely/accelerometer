@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Accelerometer Example | Generic Sensor API | mobiForge</title>
+    <title>Accelerometer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script
       src="https://unpkg.com/mqtt/dist/mqtt.min.js"
@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer data 5.135</h1>
+    <h1>Phone Data 5.14</h1>
     <div id="status">No data</div>
     <div id="controls">
       <button onclick="recording()">Record</button>
@@ -51,6 +51,7 @@
           console.log(readings);
         });
         acl.start();
+        setTimeout(acl.stop(), 5000);
       }
     </script>
   </body>
