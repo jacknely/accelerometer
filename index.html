@@ -33,10 +33,9 @@
 
       function printValues() {
         let records = document.getElementById("records");
-        let readings = [1];
         let sensor2 = new Accelerometer();
         sensor2.addEventListener("reading", function (e) {
-          console.log(sensor2);
+          let readings = [1];
           readings.push(sensor2.x);
           records.innerHTML = readings;
           console.log(readings);
