@@ -16,9 +16,9 @@
           Results will be displayed in json format. These can be
           copied to a new file for investigation
         </li>
+        <li>Refresh page to reset app</li>
       </ol>
     </p>
-    );
       <div id="status">No Accelerometer on Device</div>
       <button onclick="change()">Start</button>
       <button onclick="stop()">Stop</button>
@@ -31,12 +31,13 @@
         let sensor = new Accelerometer();
         sensor.addEventListener("reading", function (e) {
           status.innerHTML =
-            "x: " +
+            "<ul><li>x: " +
             e.target.x +
-            "<br> y: " +
+            "</li><li> y: " +
             e.target.y +
-            "<br> z: " +
-            e.target.z;
+            "</li><li>  z: " +
+            e.target.z +
+            "</li></ul>"
           recording(e);
         });
         sensor.start();
