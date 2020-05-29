@@ -13,11 +13,9 @@
     <h1>Phone Data 5.17</h1>
     <div id="status">No data</div>
     <div id="controls">
-      <button onclick="start()">Record</button>
+      <button onclick="recording()">Record</button>
     </div>
     <script>
-      let record_status = false;
-
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
@@ -33,33 +31,16 @@
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
 
-      function start() {
-        var x = document.getElementById("controls");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-        recording();
-        setTimeout(() => {
-          letrecord_status = false;
-        }, 8000);
-      }
-
       function recording() {
-        let record_status = true;
-        console.log(record_status);
-        while (record_status === true) {
-          let acl = new Accelerometer({ frequency: 2 });
-          readings = { x: [], y: [], z: [] };
-          acl.addEventListener("reading", () => {
-            readings.x.push(acl.x);
-            readings.y.push(acl.y);
-            readings.z.push(acl.z);
-            console.log(readings);
-          });
-          acl.start();
-        }
+        let acl = new Accelerometer({ frequency: 2 });
+        readings = { x: [], y: [], z: [] };
+        acl.addEventListener("reading", () => {
+          readings.x.push(acl.x);
+          readings.y.push(acl.y);
+          readings.z.push(acl.z);
+          console.log(readings);
+        });
+        acl.start();
       }
     </script>
   </body>
