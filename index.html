@@ -28,6 +28,12 @@
         });
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
+
+      function printValues(sensor) {
+        sensor.addEventListener("reading", function (e) {
+          status.innerHTML = e.target.x;
+        });
+      }
     </script>
 
     <button onclick="printValues(sensor)">Record</button>
