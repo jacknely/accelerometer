@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Accelerometer data 4</h1>
+    <h1>Accelerometer data 5</h1>
     <div id="status">No data</div>
     <div id="records">No Recordings</div>
     <button onclick="printValues()">Record</button>
@@ -33,8 +33,9 @@
 
       function printValues(sensor) {
         let records = document.getElementById("records");
-        sensor.addEventListener("reading", function (e) {
-          records.innerHTML = e.target.x;
+        let sensor2 = new Accelerometer();
+        sensor2.addEventListener("reading", function (e) {
+          records.innerHTML = "x: " + e.target.x;
         });
       }
     </script>
