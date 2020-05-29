@@ -8,7 +8,18 @@
   <body>
     <div id="result">
       <h1>Accelerometer Reader v0.1</h1>
-      <div id="status">No data</br></div>
+      <p>
+      <ol>
+        <li>Press 'Start' to record accelerometer data</li>
+        <li>When excercise is complete press 'Stop'</li>
+        <li>
+          Results will be displayed in json format. These can be
+          copied to a new file for investigation
+        </li>
+      </ol>
+    </p>
+    );
+      <div id="status">No Accelerometer on Device</div>
       <button onclick="change()">Start</button>
       <button onclick="stop()">Stop</button>
     </div>
@@ -19,17 +30,8 @@
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
         sensor.addEventListener("reading", function (e) {
-          status.innerHTML = (
-            <ol>
-              <li>Press 'Start' to record accelerometer data</li>
-              <li>When excercise is complete press 'Stop'</li>
-              <li>
-                Results will be displayed in json format. These can be
-                copied to a new file for investigation
-              </li>
-            </ol>
-          );
-          "x: " +
+          status.innerHTML =
+            "x: " +
             e.target.x +
             "<br> y: " +
             e.target.y +
