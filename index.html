@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Accelerometer data 5.13</h1>
-    <div id="status">No data<br /></div>
+    <div id="status">No data<br /><br /></div>
     <button onclick="printValues()">Record</button>
 
     <script>
@@ -35,6 +35,8 @@
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
           readings.x.push(acl.x);
+          readings.y.push(acl.y);
+          readings.z.push(acl.z);
           console.log(readings);
         });
         acl.start();
