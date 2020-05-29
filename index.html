@@ -10,12 +10,13 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 6.1.6</h1>
+    <h1>Phone Data 6.1.7</h1>
     <div id="status">No data</div>
     <button onclick="change()">Start</button>
-    <button onclick="()=>{let save = false}">Stop</button>
+    <button onclick="change()">Stop</button>
     <script>
       var save = false;
+      var readings = { x: [], y: [], z: [] };
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
@@ -34,13 +35,11 @@
 
       function change() {
         console.log("state changed");
-        save = true;
+        save = !save;
       }
 
       function recording(e) {
-        console.log(save);
         if (save === true) {
-          readings = { x: [], y: [], z: [] };
           readings.x.push(e.target.x);
           readings.y.push(e.target.y);
           readings.z.push(e.target.z);
