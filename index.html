@@ -10,10 +10,12 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 6.1.7</h1>
-    <div id="status">No data</div>
-    <button onclick="change()">Start</button>
-    <button onclick="change()">Stop</button>
+    <div id="result">
+      <h1>Phone Data 6.1.7</h1>
+      <div id="status">No data</div>
+      <button onclick="change()">Start</button>
+      <button onclick="stop()">Stop</button>
+    </div>
     <script>
       var save = false;
       var readings = { x: [], y: [], z: [] };
@@ -36,6 +38,12 @@
       function change() {
         console.log("state changed");
         save = !save;
+      }
+
+      function stop() {
+        let result = document.getElementById("result");
+        save = !save;
+        status.innerHTML = readings.toString();
       }
 
       function recording(e) {
