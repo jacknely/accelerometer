@@ -32,13 +32,11 @@
       } else status.innerHTML = "Accelerometer not supported";
 
       function printValues() {
-        let acl = new Accelerometer({ frequency: 30 });
-        let max_magnitude = 0;
+        let acl = new Accelerometer();
         acl.addEventListener("reading", () => {
           readings = [1];
-          let magnitude = Math.hypot(acl.x, acl.y, acl.z);
-          console.log(`Max magnitude: ${max_magnitude} m/s2`);
-          readings.push(max_magnitude);
+          console.log(acl.x);
+          readings.push(acl.x);
           console.log(readings);
         });
         acl.start();
