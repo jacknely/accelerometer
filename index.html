@@ -12,14 +12,13 @@
   <body>
     <h1>Phone Data 6.1.4</h1>
     <div id="status">No data</div>
-    <button onclick="()=>{let save = true}">Start</button>
+    <button onclick="change()">Start</button>
     <button onclick="()=>{let save = false}">Stop</button>
     <script>
       let status = document.getElementById("status");
       let save = false;
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
-        let state = false;
         sensor.addEventListener("reading", function (e) {
           status.innerHTML =
             "x: " +
@@ -33,6 +32,10 @@
         });
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
+
+      function change() {
+        let save = true;
+      }
 
       function recording(e, save) {
         if (save === true) {
