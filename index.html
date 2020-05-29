@@ -43,7 +43,7 @@
           recording(e);
         });
         sensor.start();
-      } else status.innerHTML = "Accelerometer not supported";
+      };
 
       function start() {
         let stop = document.getElementById("stop");
@@ -52,7 +52,6 @@
       }
 
       function stop() {
-        
         save = !save;
         result.innerHTML = JSON.stringify(readings);
       }
