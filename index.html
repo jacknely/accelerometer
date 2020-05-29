@@ -16,7 +16,6 @@
     <button onclick="()=>{let save = false}">Stop</button>
     <script>
       let status = document.getElementById("status");
-      let save = false;
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
         sensor.addEventListener("reading", function (e) {
