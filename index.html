@@ -39,17 +39,17 @@
           x.style.display = "block";
         } else {
           x.style.display = "none";
-          let record_status = true;
           recording();
           setTimeout(() => {
-            record_status = false;
+            let record_status = false;
           }, 8000);
         }
       }
 
       function recording() {
+        let record_status = true;
         console.log(record_status);
-        if (record_status === true) {
+        while (record_status === true) {
           let acl = new Accelerometer({ frequency: 2 });
           readings = { x: [], y: [], z: [] };
           acl.addEventListener("reading", () => {
