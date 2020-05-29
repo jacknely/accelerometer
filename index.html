@@ -10,12 +10,14 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1>Phone Data 5.145</h1>
+    <h1>Phone Data 5.16</h1>
     <div id="status">No data</div>
     <div id="controls">
-      <button onclick="recording()">Record</button>
+      <button onclick="start()">Record</button>
     </div>
     <script>
+      let record_status = false;
+
       let status = document.getElementById("status");
       if ("Accelerometer" in window) {
         let sensor = new Accelerometer();
@@ -31,18 +33,22 @@
         sensor.start();
       } else status.innerHTML = "Accelerometer not supported";
 
-      function hideControls(acl) {
+      function start() {
         var x = document.getElementById("controls");
         if (x.style.display === "none") {
           x.style.display = "block";
         } else {
           x.style.display = "none";
-          setTimeout(acl.stop(), 5000);
+          let record_status = true;
+          setTimeout(() => {
+            record_status = false;
+          }, 8000);
+          recording();
         }
       }
 
       function recording() {
-        hideControls(acl);
+        if (record_status === true {
         let acl = new Accelerometer({ frequency: 2 });
         readings = { x: [], y: [], z: [] };
         acl.addEventListener("reading", () => {
@@ -52,7 +58,7 @@
           console.log(readings);
         });
         acl.start();
-      }
+      }}
     </script>
   </body>
 </html>
