@@ -13,16 +13,16 @@
         <li>Press 'Start' to record accelerometer data</li>
         <li>When excercise is complete press 'Stop'</li>
         <li>
-          Results will be displayed in json format. These can be
+          Results will be displayed in JSON format. These can be
           copied to a new file for investigation
         </li>
         <li>Refresh page to reset app</li>
       </ol>
     </p>
-    
       <button onclick="start()">Start</button>
       <button onclick="stop()">Stop</button>
       <div id="status"></div>
+      <div id="record"></div>
     </div>
     <script>
       var save = false;
@@ -60,6 +60,9 @@
           readings.y.push(e.target.y);
           readings.z.push(e.target.z);
           console.log(readings);
+          let record = document.getElementById("record")
+          record.innerHTML = "Recording Data"
+          record.style.color = "red"
         }
       }
     </script>
