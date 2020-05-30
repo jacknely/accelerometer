@@ -1,6 +1,12 @@
 var save = false;
-var readings = { exercise: "", reps: "", acc: { x: [], y: [], z: [] } };
+var readings = {
+  exercise: "",
+  reps: "",
+  time: [],
+  acc: { x: [], y: [], z: [] },
+};
 var acc = { x: "", y: "", z: "" };
+var timeInMs = Date.now();
 let status = document.getElementById("status");
 
 if ("Accelerometer" in window) {
@@ -41,6 +47,7 @@ function recording() {
     readings.acc.x.push(acc.x);
     readings.acc.y.push(acc.y);
     readings.acc.z.push(acc.z);
+    readings.time.push(timeInMs);
     console.log(readings);
     let record = document.getElementById("record");
     record.innerHTML = "Recording Data";
