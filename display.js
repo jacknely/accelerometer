@@ -33,6 +33,9 @@ function start() {
   readings.exercise = input.elements[0].value;
   readings.reps = input.elements[1].value;
   save = !save;
+  var stop = document.getElementById("stop");
+  stop.style.display = "block";
+  input.style.display = "none";
 }
 
 function stop() {
