@@ -1,5 +1,5 @@
 var save = false;
-var readings = { ex: "", rep: "", x: [], y: [], z: [] };
+var readings = { exercise: "", reps: "", x: [], y: [], z: [] };
 let status = document.getElementById("status");
 if ("Accelerometer" in window) {
   let sensor = new Accelerometer();
@@ -19,14 +19,15 @@ if ("Accelerometer" in window) {
 
 function start() {
   var input = document.getElementById("form1");
-  readings.ex = input.elements[0].value;
-  readings.rep = input.elements[1].value;
+  readings.exercise = input.elements[0].value;
+  readings.reps = input.elements[1].value;
   save = !save;
 }
 
 function stop() {
   let result = document.getElementById("result");
   save = !save;
+  putReading();
   result.innerHTML = JSON.stringify(readings);
 }
 
@@ -41,3 +42,16 @@ function recording(e) {
     record.style.color = "red";
   }
 }
+
+// api
+putReading = () => {
+  const BASE_URL = "https://postman-echo.com/put";
+  axios
+    .put(`${BASE_URL}`, readings)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
