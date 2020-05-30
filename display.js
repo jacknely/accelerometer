@@ -6,9 +6,6 @@ let status = document.getElementById("status");
 if ("Accelerometer" in window) {
   let sensor = new Accelerometer();
   sensor.addEventListener("reading", (e) => {
-    acc.x = e.target.x;
-    acc.y = e.target.y;
-    acc.z = e.target.z;
     status.innerHTML =
       "<ul><li>x: " +
       e.target.x +
@@ -17,6 +14,10 @@ if ("Accelerometer" in window) {
       "</li><li>  z: " +
       e.target.z +
       "</li></ul>";
+    acc.x = e.target.x;
+    acc.y = e.target.y;
+    acc.z = e.target.z;
+    recording();
   });
   sensor.start();
 } else status.innerHTML = "Accelerometer not supported";
@@ -26,7 +27,6 @@ function start() {
   readings.exercise = input.elements[0].value;
   readings.reps = input.elements[1].value;
   save = !save;
-  recording();
 }
 
 function stop() {
