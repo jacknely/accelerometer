@@ -1,9 +1,14 @@
 var save = false;
-var readings = { exercise: "", reps: "", x: [], y: [], z: [] };
+var readings = { exercise: "", reps: "", acc: { x: [], y: [], z: [] } };
+var acc = { x: "", y: "", z: "" };
 let status = document.getElementById("status");
+
 if ("Accelerometer" in window) {
   let sensor = new Accelerometer();
-  sensor.addEventListener("reading", function (e) {
+  sensor.addEventListener("reading", (e) => {
+    acc.x = e.target.x;
+    acc.y = e.target.y;
+    acc.z = e.target.z;
     status.innerHTML =
       "<ul><li>x: " +
       e.target.x +
@@ -12,7 +17,6 @@ if ("Accelerometer" in window) {
       "</li><li>  z: " +
       e.target.z +
       "</li></ul>";
-    recording(e);
   });
   sensor.start();
 } else status.innerHTML = "Accelerometer not supported";
@@ -22,6 +26,7 @@ function start() {
   readings.exercise = input.elements[0].value;
   readings.reps = input.elements[1].value;
   save = !save;
+  recording();
 }
 
 function stop() {
@@ -31,11 +36,11 @@ function stop() {
   result.innerHTML = JSON.stringify(readings);
 }
 
-function recording(e) {
+function recording() {
   if (save === true) {
-    readings.x.push(e.target.x);
-    readings.y.push(e.target.y);
-    readings.z.push(e.target.z);
+    readings.acc.x.push(acc.x);
+    readings.acc.y.push(acc.y);
+    readings.acc.z.push(acc.z);
     console.log(readings);
     let record = document.getElementById("record");
     record.innerHTML = "Recording Data";
