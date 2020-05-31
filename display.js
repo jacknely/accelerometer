@@ -37,6 +37,10 @@ abs.onreading = () => {
   abs.populateMatrix(mat4);
   absd.innerHTML = "<h3>Absolute Orientation</h3>" + mat4;
 };
+abs.addEventListener("reading", function (e) {
+  var q = e.target.quaternion;
+  console.log(q);
+});
 
 var acc = { x: "", y: "", z: "" };
 let acl = new Accelerometer();
