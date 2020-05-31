@@ -49,7 +49,7 @@ gyro.addEventListener("reading", (e) => {
 });
 
 let linear = document.getElementById("linear");
-gyro.addEventListener("reading", (e) => {
+linear.addEventListener("reading", (e) => {
   linear.innerHTML =
     "<h3>Linear Acceleration</h3><ul><li>x: " +
     e.target.x +
