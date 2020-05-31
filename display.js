@@ -7,7 +7,6 @@ var readings = {
   gyro: { x: [], y: [], z: [] },
   linear: { x: [], y: [], z: [] },
   mag: { x: [], y: [], z: [] },
-  abs: { x: [], y: [], z: [] },
 };
 var timeInMs = Date.now();
 
@@ -29,23 +28,16 @@ var timeInMs = Date.now();
 // });
 // mag.start();
 
-var absValues = { x: "", y: "", z: "" };
-let abs = new AbsoluteOrientationSensor();
 let absd = document.getElementById("absd");
-abs.addEventListener("reading", (e) => {
-  absd.innerHTML =
-    "<h3>Absolute Orientation</h3><ul><li>x: " +
-    e.target.x +
-    "</li><li> y: " +
-    e.target.y +
-    "</li><li>  z: " +
-    e.target.z +
-    "</li></ul>";
-  absValues.x = e.target.x;
-  absValues.y = e.target.y;
-  absValues.z = e.target.z;
-});
+const abs = new AbsoluteOrientationSensor();
+const mat4 = new Float32Array(16);
 abs.start();
+abs.onerror = (event) =>
+  console.log(event.error.name, event.error.message);
+abs.onreading = () => {
+  abs.populateMatrix(mat4);
+  absd.innerHTML = "<h3>Absolute Orientation</h3><ul><li>value: " + mat4;
+};
 
 var acc = { x: "", y: "", z: "" };
 let acl = new Accelerometer();
