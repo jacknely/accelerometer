@@ -40,6 +40,12 @@ abs.onreading = () => {
     "<h3>Absolute Orientation</h3><ul><li>" +
     mat4.forEach((item) => `<li>${item}</li>`);
   +"</ul>";
+  console.log(mat4);
+  var arrayLength = mat4.length;
+  for (var i = 0; i < arrayLength; i++) {
+    console.log(mat4[i]);
+    //Do something
+  }
 };
 
 var acc = { x: "", y: "", z: "" };
