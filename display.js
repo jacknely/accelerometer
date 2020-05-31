@@ -34,7 +34,7 @@ let abs = new AbsoluteOrientationSensor();
 let absd = document.getElementById("absd");
 abs.addEventListener("reading", (e) => {
   absd.innerHTML =
-    "<h3>Accelerometer</h3><ul><li>w: " +
+    "<h3>Absolute Orientation</h3><ul><li>w: " +
     e.target.quaternion[0] +
     "</li><li> x: " +
     e.target.quaternion[1] +
