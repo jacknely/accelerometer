@@ -11,24 +11,6 @@ var readings = {
 };
 var timeInMs = Date.now();
 
-var magValues = { x: "", y: "", z: "" };
-let mag = new Magnetometer();
-let magd = document.getElementById("magd");
-mag.addEventListener("reading", (e) => {
-  magd.innerHTML =
-    "<h3>Magnetometer</h3><ul><li>x: " +
-    e.target.x +
-    "</li><li> y: " +
-    e.target.y +
-    "</li><li>  z: " +
-    e.target.z +
-    "</li></ul>";
-  magValues.x = e.target.x;
-  magValues.y = e.target.y;
-  magValues.z = e.target.z;
-});
-mag.start();
-
 var absValues = { x: "", y: "", z: "" };
 let abs = new AbsoluteOrientationSensor();
 let absd = document.getElementById("absd");
@@ -45,7 +27,7 @@ abs.addEventListener("reading", (e) => {
   absValues.y = e.target.y;
   absValues.z = e.target.z;
 });
-mag.start();
+abs.start();
 
 var acc = { x: "", y: "", z: "" };
 let acl = new Accelerometer();
