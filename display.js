@@ -5,12 +5,16 @@ var readings = {
   time: [],
   acc: { x: [], y: [], z: [] },
   gyro: { x: [], y: [], z: [] },
+  linear: { x: [], y: [], z: [] },
 };
 var acc = { x: "", y: "", z: "" };
 var gyr = { x: "", y: "", z: "" };
+var linearAcc = { x: "", y: "", z: "" };
 var timeInMs = Date.now();
+
 let acl = new Accelerometer();
 let gyro = new Gyroscope();
+let linear = new LinearAccelerationSensor();
 
 let accelerometer = document.getElementById("accelerometer");
 acl.addEventListener("reading", (e) => {
@@ -44,8 +48,24 @@ gyro.addEventListener("reading", (e) => {
   gyr.z = e.target.z;
 });
 
+let linear = document.getElementById("linear");
+gyro.addEventListener("reading", (e) => {
+  linear.innerHTML =
+    "<h3>Linear Acceleration</h3><ul><li>x: " +
+    e.target.x +
+    "</li><li> y: " +
+    e.target.y +
+    "</li><li>  z: " +
+    e.target.z +
+    "</li></ul>";
+  linearAcc.x = e.target.x;
+  linearAcc.y = e.target.y;
+  linearAcc.z = e.target.z;
+});
+
 acl.start();
 gyro.start();
+linear.start();
 
 function start() {
   var exercise = document.forms["form1"]["exercise"].value;
@@ -76,9 +96,15 @@ function recording() {
     readings.acc.x.push(acc.x);
     readings.acc.y.push(acc.y);
     readings.acc.z.push(acc.z);
+
     readings.gyro.x.push(gyr.x);
     readings.gyro.y.push(gyr.y);
     readings.gyro.z.push(gyr.z);
+
+    readings.linear.x.push(linearAcc.x);
+    readings.linear.y.push(linearAcc.y);
+    readings.linear.z.push(linearAcc.z);
+
     readings.time.push(timeInMs);
     console.log(readings);
     let record = document.getElementById("record");
