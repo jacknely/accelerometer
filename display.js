@@ -7,7 +7,7 @@ var readings = {
   gyro: { x: [], y: [], z: [] },
   linear: { x: [], y: [], z: [] },
   mag: { x: [], y: [], z: [] },
-  abs: [],
+  abs: { w: [], x: [], y: [], z: [] },
 };
 var timeInMs = Date.now();
 
@@ -29,18 +29,26 @@ mag.addEventListener("reading", (e) => {
 });
 mag.start();
 
-var mat4 = new Float32Array(16);
+var absValues = { w: "", x: "", y: "", z: "" };
 let abs = new AbsoluteOrientationSensor();
 let absd = document.getElementById("absd");
-abs.start();
-abs.onreading = () => {
-  abs.populateMatrix(mat4);
-  absd.innerHTML = "<h3>Absolute Orientation</h3>" + mat4;
-};
-abs.addEventListener("reading", function (e) {
-  var q = e.target.quaternion;
-  console.log(e);
+abs.addEventListener("reading", (e) => {
+  absd.innerHTML =
+    "<h3>Accelerometer</h3><ul><li>w: " +
+    e.target.quaternion[0] +
+    "</li><li> x: " +
+    e.target.quaternion[1] +
+    "</li><li> y: " +
+    e.target.quaternion[2] +
+    "</li><li>  z: " +
+    e.target.quaternion[3] +
+    "</li></ul>";
+  absValues.w = e.target.quaternion[0];
+  absValues.x = e.target.quaternion[1];
+  absValues.y = e.target.quaternion[2];
+  absValues.z = e.target.quaternion[3];
 });
+abs.start();
 
 var acc = { x: "", y: "", z: "" };
 let acl = new Accelerometer();
@@ -140,7 +148,10 @@ function recording() {
     readings.mag.y.push(magValues.y);
     readings.mag.z.push(magValues.z);
 
-    readings.abs.push(mat4);
+    readings.abs.w.push(absValues.w);
+    readings.abs.x.push(absValues.x);
+    readings.abs.y.push(absValues.y);
+    readings.abs.z.push(absValues.z);
 
     readings.time.push(timeInMs);
 
