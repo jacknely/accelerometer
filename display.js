@@ -4,26 +4,15 @@ var readings = {
   reps: "",
   time: [],
   acc: { x: [], y: [], z: [] },
+  gyro: { x: [], y: [], z: [] },
 };
 var acc = { x: "", y: "", z: "" };
 var gyr = { x: "", y: "", z: "" };
 var timeInMs = Date.now();
-let status = document.getElementById("status");
 let acl = new Accelerometer();
 let gyro = new Gyroscope();
-gyro.addEventListener("reading", (e) => {
-  status.innerHTML =
-    "<h3>Gyroscope</h3><br><ul><li>x: " +
-    e.target.x +
-    "</li><li> y: " +
-    e.target.y +
-    "</li><li>  z: " +
-    e.target.z +
-    "</li></ul>";
-  gyr.x = e.target.x;
-  gyr.y = e.target.y;
-  gyr.z = e.target.z;
-});
+
+let status = document.getElementById("status");
 acl.addEventListener("reading", (e) => {
   status.innerHTML =
     "<h3>Accelerometer</h3><br><ul><li>x: " +
@@ -39,7 +28,15 @@ acl.addEventListener("reading", (e) => {
   timeInMs = Date.now();
   recording();
 });
+
+gyro.addEventListener("reading", (e) => {
+  gyr.x = e.target.x;
+  gyr.y = e.target.y;
+  gyr.z = e.target.z;
+});
+
 acl.start();
+gyro.start();
 
 function start() {
   var exercise = document.forms["form1"]["exercise"].value;
@@ -70,6 +67,9 @@ function recording() {
     readings.acc.x.push(acc.x);
     readings.acc.y.push(acc.y);
     readings.acc.z.push(acc.z);
+    readings.gyro.x.push(gyr.x);
+    readings.gyro.y.push(gyr.y);
+    readings.gyro.z.push(gyr.z);
     readings.time.push(timeInMs);
     console.log(readings);
     let record = document.getElementById("record");
