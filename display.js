@@ -60,7 +60,8 @@ function recording() {
 
 // api
 putReading = () => {
-  const BASE_URL = "https://postman-echo.com/put";
+  const BASE_URL =
+    "https://gbuz6kdwq7.execute-api.eu-west-1.amazonaws.com/dev";
   axios
     .put(`${BASE_URL}`, readings)
     .then(function (response) {
