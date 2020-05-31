@@ -6,7 +6,7 @@ var readings = {
   acc: { x: [], y: [], z: [] },
   gyro: { x: [], y: [], z: [] },
   linear: { x: [], y: [], z: [] },
-  abs: { x: [], y: [], z: [] },
+  abs: [],
 };
 var timeInMs = Date.now();
 
