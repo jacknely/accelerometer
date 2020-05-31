@@ -14,7 +14,7 @@ var timeInMs = Date.now();
 
 let acl = new Accelerometer();
 let gyro = new Gyroscope();
-let linear = new LinearAccelerationSensor();
+let lin = new LinearAccelerationSensor();
 
 let accelerometer = document.getElementById("accelerometer");
 acl.addEventListener("reading", (e) => {
@@ -49,7 +49,7 @@ gyro.addEventListener("reading", (e) => {
 });
 
 let linear = document.getElementById("linear");
-linear.addEventListener("reading", (e) => {
+lin.addEventListener("reading", (e) => {
   linear.innerHTML =
     "<h3>Linear Acceleration</h3><ul><li>x: " +
     e.target.x +
