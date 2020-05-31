@@ -46,7 +46,8 @@ async function stop() {
   let result = document.getElementById("result");
   save = !save;
   const resp = await putReading();
-  result.innerHTML = `<a href="${resp}" target="_blank">Show File</a>`;
+  result.innerHTML = `<a href="${resp}" target="_blank">Show File</a><br>
+  <br><a href="">Go again...</a>`;
 }
 
 function recording() {
