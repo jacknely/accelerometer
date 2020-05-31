@@ -21,9 +21,9 @@
     </p>
 
     <form id="form1">
-      Excercise: <input type="text" name="fname" autocomplete="false"><br>
-      Reps: <input type="text" name="lname" autocomplete="false"><br><br>
-      <input type="button" onclick="start()" value="Start">
+      Excercise: <input type="text" name="exercise" autocomplete="false" required><br>
+      Reps: <input type="text" name="reps" autocomplete="false" required><br><br>
+      <input type="button" value="Start" onclick="start()">
     </form>
     <div style="display: none;" id="stop">
       <button onclick="stop()">Stop</button>
