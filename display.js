@@ -6,7 +6,7 @@ var readings = {
   acc: { x: [], y: [], z: [] },
   gyro: { x: [], y: [], z: [] },
   linear: { x: [], y: [], z: [] },
-  mag: { x: [], y: [], z: [] },
+  abs: { x: [], y: [], z: [] },
 };
 var timeInMs = Date.now();
 
@@ -32,20 +32,9 @@ let absd = document.getElementById("absd");
 const abs = new AbsoluteOrientationSensor();
 const mat4 = new Float32Array(16);
 abs.start();
-abs.onerror = (event) =>
-  console.log(event.error.name, event.error.message);
 abs.onreading = () => {
   abs.populateMatrix(mat4);
-  absd.innerHTML =
-    "<h3>Absolute Orientation</h3><ul><li>" +
-    mat4.forEach((item) => `<li>${item}</li>`);
-  +"</ul>";
-  console.log(mat4);
-  var arrayLength = mat4.length;
-  for (var i = 0; i < arrayLength; i++) {
-    console.log(mat4[i]);
-    //Do something
-  }
+  absd.innerHTML = "<h3>Absolute Orientation</h3><br>" + mat4;
 };
 
 var acc = { x: "", y: "", z: "" };
@@ -141,6 +130,8 @@ function recording() {
     readings.linear.x.push(linearAcc.x);
     readings.linear.y.push(linearAcc.y);
     readings.linear.z.push(linearAcc.z);
+
+    readings.abs.push(mat4);
 
     readings.time.push(timeInMs);
 
