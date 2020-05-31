@@ -36,7 +36,10 @@ abs.onerror = (event) =>
   console.log(event.error.name, event.error.message);
 abs.onreading = () => {
   abs.populateMatrix(mat4);
-  absd.innerHTML = "<h3>Absolute Orientation</h3><ul><li>value: " + mat4;
+  absd.innerHTML =
+    "<h3>Absolute Orientation</h3><ul><li>" +
+    mat4.forEach((item) => `<li>${item}</li>`);
+  +"</ul>";
 };
 
 var acc = { x: "", y: "", z: "" };
