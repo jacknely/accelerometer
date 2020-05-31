@@ -35,7 +35,7 @@ let absd = document.getElementById("absd");
 abs.start();
 abs.onreading = () => {
   abs.populateMatrix(mat4);
-  absd.innerHTML = "<h3>Absolute Orientation</h3><br>" + mat4;
+  absd.innerHTML = "<h3>Absolute Orientation</h3>" + mat4;
 };
 
 var acc = { x: "", y: "", z: "" };
