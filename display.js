@@ -8,6 +8,7 @@ var readings = {
   linear: { x: [], y: [], z: [] },
   mag: { x: [], y: [], z: [] },
   abs: { w: [], x: [], y: [], z: [] },
+  rel: { w: [], x: [], y: [], z: [] },
 };
 var timeInMs = Date.now();
 
@@ -49,6 +50,27 @@ abs.addEventListener("reading", (e) => {
   absValues.z = e.target.quaternion[3];
 });
 abs.start();
+
+var relValues = { w: "", x: "", y: "", z: "" };
+let rel = new RelativeOrientationSensor();
+let reld = document.getElementById("reld");
+rel.addEventListener("reading", (e) => {
+  reld.innerHTML =
+    "<h3>Relative Orientation</h3><ul><li>w: " +
+    e.target.quaternion[0] +
+    "</li><li> x: " +
+    e.target.quaternion[1] +
+    "</li><li> y: " +
+    e.target.quaternion[2] +
+    "</li><li>  z: " +
+    e.target.quaternion[3] +
+    "</li></ul>";
+  relValues.w = e.target.quaternion[0];
+  relValues.x = e.target.quaternion[1];
+  relValues.y = e.target.quaternion[2];
+  relValues.z = e.target.quaternion[3];
+});
+rel.start();
 
 var acc = { x: "", y: "", z: "" };
 let acl = new Accelerometer();
@@ -152,6 +174,11 @@ function recording() {
     readings.abs.x.push(absValues.x);
     readings.abs.y.push(absValues.y);
     readings.abs.z.push(absValues.z);
+
+    readings.rel.w.push(relValues.w);
+    readings.rel.x.push(relValues.x);
+    readings.rel.y.push(relValues.y);
+    readings.rel.z.push(relValues.z);
 
     readings.time.push(timeInMs);
 
