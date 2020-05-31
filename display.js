@@ -55,6 +55,7 @@ var relValues = { w: "", x: "", y: "", z: "" };
 let rel = new RelativeOrientationSensor();
 let reld = document.getElementById("reld");
 rel.addEventListener("reading", (e) => {
+  console.log(e);
   reld.innerHTML =
     "<h3>Relative Orientation</h3><ul><li>w: " +
     e.target.quaternion[0] +
