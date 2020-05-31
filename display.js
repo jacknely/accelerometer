@@ -65,7 +65,7 @@ lin.addEventListener("reading", (e) => {
 
 acl.start();
 gyro.start();
-linear.start();
+lin.start();
 
 function start() {
   var exercise = document.forms["form1"]["exercise"].value;
