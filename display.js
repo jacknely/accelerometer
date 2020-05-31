@@ -6,12 +6,27 @@ var readings = {
   acc: { x: [], y: [], z: [] },
 };
 var acc = { x: "", y: "", z: "" };
+var gyr = { x: "", y: "", z: "" };
 var timeInMs = Date.now();
 let status = document.getElementById("status");
-let sensor = new Accelerometer();
-sensor.addEventListener("reading", (e) => {
+let acl = new Accelerometer();
+let gyro = new Gyroscope();
+gyro.addEventListener("reading", (e) => {
   status.innerHTML =
-    "<ul><li>x: " +
+    "<h3>Gyroscope</h3><br><ul><li>x: " +
+    e.target.x +
+    "</li><li> y: " +
+    e.target.y +
+    "</li><li>  z: " +
+    e.target.z +
+    "</li></ul>";
+  gyr.x = e.target.x;
+  gyr.y = e.target.y;
+  gyr.z = e.target.z;
+});
+acl.addEventListener("reading", (e) => {
+  status.innerHTML =
+    "<h3>Accelerometer</h3><br><ul><li>x: " +
     e.target.x +
     "</li><li> y: " +
     e.target.y +
@@ -24,7 +39,7 @@ sensor.addEventListener("reading", (e) => {
   timeInMs = Date.now();
   recording();
 });
-sensor.start();
+acl.start();
 
 function start() {
   var exercise = document.forms["form1"]["exercise"].value;
