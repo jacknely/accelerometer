@@ -12,10 +12,10 @@ var timeInMs = Date.now();
 let acl = new Accelerometer();
 let gyro = new Gyroscope();
 
-let status = document.getElementById("status");
+let accelerometer = document.getElementById("accelerometer");
 acl.addEventListener("reading", (e) => {
-  status.innerHTML =
-    "<h3>Accelerometer</h3><br><ul><li>x: " +
+  accelerometer.innerHTML =
+    "<h3>Accelerometer</h3><ul><li>x: " +
     e.target.x +
     "</li><li> y: " +
     e.target.y +
@@ -29,7 +29,16 @@ acl.addEventListener("reading", (e) => {
   recording();
 });
 
+let gyroscope = document.getElementById("gyroscope");
 gyro.addEventListener("reading", (e) => {
+  gyroscope.innerHTML =
+    "<h3>Gyroscope</h3><ul><li>x: " +
+    e.target.x +
+    "</li><li> y: " +
+    e.target.y +
+    "</li><li>  z: " +
+    e.target.z +
+    "</li></ul>";
   gyr.x = e.target.x;
   gyr.y = e.target.y;
   gyr.z = e.target.z;
