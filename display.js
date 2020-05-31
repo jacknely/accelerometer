@@ -39,7 +39,7 @@ abs.onreading = () => {
 };
 abs.addEventListener("reading", function (e) {
   var q = e.target.quaternion;
-  console.log(q);
+  console.log(e);
 });
 
 var acc = { x: "", y: "", z: "" };
