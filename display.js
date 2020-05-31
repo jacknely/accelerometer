@@ -6,6 +6,7 @@ var readings = {
   acc: { x: [], y: [], z: [] },
   gyro: { x: [], y: [], z: [] },
   linear: { x: [], y: [], z: [] },
+  mag: { x: [], y: [], z: [] },
   abs: [],
 };
 var timeInMs = Date.now();
@@ -14,7 +15,6 @@ var magValues = { x: "", y: "", z: "" };
 let mag = new Magnetometer();
 let magd = document.getElementById("magd");
 mag.addEventListener("reading", (e) => {
-  console.log(e);
   magd.innerHTML =
     "<h3>Magnetometer</h3><ul><li>x: " +
     e.target.x +
@@ -131,6 +131,10 @@ function recording() {
     readings.linear.x.push(linearAcc.x);
     readings.linear.y.push(linearAcc.y);
     readings.linear.z.push(linearAcc.z);
+
+    readings.mag.x.push(magValues.x);
+    readings.mag.y.push(magValues.y);
+    readings.mag.z.push(magValues.z);
 
     readings.abs.push(mat4);
 
