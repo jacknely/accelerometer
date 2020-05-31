@@ -28,9 +28,9 @@ var timeInMs = Date.now();
 // });
 // mag.start();
 
+var mat4 = new Float32Array(16);
+let abs = new AbsoluteOrientationSensor();
 let absd = document.getElementById("absd");
-const abs = new AbsoluteOrientationSensor();
-const mat4 = new Float32Array(16);
 abs.start();
 abs.onreading = () => {
   abs.populateMatrix(mat4);
