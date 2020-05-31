@@ -10,23 +10,24 @@ var readings = {
 };
 var timeInMs = Date.now();
 
-// var magValues = { x: "", y: "", z: "" };
-// let mag = new Magnetometer();
-// let magd = document.getElementById("magd");
-// mag.addEventListener("reading", (e) => {
-//   magd.innerHTML =
-//     "<h3>Magnetometer</h3><ul><li>x: " +
-//     e.target.x +
-//     "</li><li> y: " +
-//     e.target.y +
-//     "</li><li>  z: " +
-//     e.target.z +
-//     "</li></ul>";
-//   magValues.x = e.target.x;
-//   magValues.y = e.target.y;
-//   magValues.z = e.target.z;
-// });
-// mag.start();
+var magValues = { x: "", y: "", z: "" };
+let mag = new Magnetometer();
+let magd = document.getElementById("magd");
+mag.addEventListener("reading", (e) => {
+  console.log(e);
+  magd.innerHTML =
+    "<h3>Magnetometer</h3><ul><li>x: " +
+    e.target.x +
+    "</li><li> y: " +
+    e.target.y +
+    "</li><li>  z: " +
+    e.target.z +
+    "</li></ul>";
+  magValues.x = e.target.x;
+  magValues.y = e.target.y;
+  magValues.z = e.target.z;
+});
+mag.start();
 
 var mat4 = new Float32Array(16);
 let abs = new AbsoluteOrientationSensor();
